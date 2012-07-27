@@ -91,13 +91,18 @@ public class DDLGenerator extends Thread {
             emf = Persistence.createEntityManagerFactory(this.unitName,
                     this.properties);
 
-            em = emf.createEntityManager();
+            try {
+                
+                em = emf.createEntityManager();
+                
+            } finally {
+
+                if (em != null) {
+                    em.close();
+                }
+            }
 
         } finally {
-
-            if (em != null) {
-                em.close();
-            }
 
             if (emf != null) {
                 emf.close();
