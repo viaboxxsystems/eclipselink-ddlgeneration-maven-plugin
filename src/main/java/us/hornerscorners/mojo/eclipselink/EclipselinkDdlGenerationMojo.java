@@ -100,8 +100,9 @@ public class EclipselinkDdlGenerationMojo extends AbstractMojo {
 
         urls.add(classesFile.toURI().toURL());
 
-        return new URLClassLoader(urls.toArray(new URL[urls.size()]),
-                                  this.getClass().getClassLoader());
+        return new URLClassLoader(
+            urls.toArray(new URL[urls.size()]),
+            Thread.currentThread().getContextClassLoader());
     }
 
     /**
