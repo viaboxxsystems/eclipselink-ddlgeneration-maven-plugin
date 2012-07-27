@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+    <groupId>us.hornerscorners.mojo</groupId>
+    <artifactId>eclipselink-ddlgeneration-maven-plugin</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+    <name>eclipselink-ddlgeneration-maven-plugin</name>
+    <description>
+        Generates DDL as part of a maven build.
+    </description>
+    <url>http://code.google.com/p/eclipselink-ddlgeneration-maven-plugin/</url>
+    <developers>
+        <developer>
+            <id>jim@hornerscorners.us</id>
+            <name>Jim Horner</name>
+            <email>jim@hornerscorners.us</email>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:svn:https://eclipselink-ddlgeneration-maven-plugin.googlecode.com/svn/trunk/</connection>
+        <developerConnection>scm:svn:https://eclipselink-ddlgeneration-maven-plugin.googlecode.com/svn/trunk/</developerConnection>
+        <url>https://eclipselink-ddlgeneration-maven-plugin.googlecode.com/svn/trunk/</url>
+    </scm>
+    <issueManagement>
+        <system>googlecode</system>
+        <url>http://code.google.com/p/eclipselink-ddlgeneration-maven-plugin/issues</url>
+    </issueManagement>
+    <distributionManagement>
+        <site>
+            <id>eclipselink-ddlgeneration-maven-plugin.googlecode.com</id>
+            <url>svn:https://eclipselink-ddlgeneration-maven-plugin.googlecode.com/svn/site</url>
+        </site>
+    </distributionManagement>
+    <properties>
+        <maven.version>2.2.1</maven.version>
+    </properties>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>com.google.code.maven-svn-wagon</groupId>
+                <artifactId>maven-svn-wagon</artifactId>
+                <version>1.4</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <!--
+        Located in parent pom.xml
+        attaches sources, javadoc and signs
+        <profile>
+            <id>sonatype-oss-release</id>
+        </profile>
+        -->
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-model</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-project</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+    </dependencies>
+</project>
