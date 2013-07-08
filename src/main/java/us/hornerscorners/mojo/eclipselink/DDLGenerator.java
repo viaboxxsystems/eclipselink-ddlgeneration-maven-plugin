@@ -26,19 +26,23 @@ import org.eclipse.persistence.config.PersistenceUnitProperties;
  *
  *
  * @version        v1.0, 2012-07-27
- * @author         Jim Horner
+ * @author Jim Horner
+ * @version v1.0, 2012-07-27
  */
 public class DDLGenerator extends Thread {
 
-    /** Field description */
+    /**
+     * Field description
+     */
     private final Map<String, Object> properties;
 
-    /** Field description */
+    /**
+     * Field description
+     */
     private final String unitName;
 
     /**
      * Constructs ...
-     *
      *
      * @param cl
      */
@@ -54,12 +58,11 @@ public class DDLGenerator extends Thread {
     /**
      * Method description
      *
-     *
      * @return
      */
     private Map<String, Object> buildProperties() {
 
-        Map<String, Object> props = new HashMap<>();
+        Map<String, Object> props = new HashMap<String, Object>();
 
         // override with local transaction
         props.put(PersistenceUnitProperties.TRANSACTION_TYPE, "RESOURCE_LOCAL");
@@ -69,16 +72,15 @@ public class DDLGenerator extends Thread {
 
         // Enable DDL Generation
         props.put(PersistenceUnitProperties.DDL_GENERATION,
-                  PersistenceUnitProperties.DROP_AND_CREATE);
+                PersistenceUnitProperties.DROP_AND_CREATE);
         props.put(PersistenceUnitProperties.DDL_GENERATION_MODE,
-                  PersistenceUnitProperties.DDL_SQL_SCRIPT_GENERATION);
+                PersistenceUnitProperties.DDL_SQL_SCRIPT_GENERATION);
 
         return props;
     }
 
     /**
      * Method description
-     *
      */
     @Override
     public void run() {
@@ -92,9 +94,9 @@ public class DDLGenerator extends Thread {
                     this.properties);
 
             try {
-                
+
                 em = emf.createEntityManager();
-                
+
             } finally {
 
                 if (em != null) {
@@ -136,7 +138,6 @@ public class DDLGenerator extends Thread {
     /**
      * Method description
      *
-     *
      * @param val
      */
     public void setJdbcDriver(String val) {
@@ -145,7 +146,6 @@ public class DDLGenerator extends Thread {
 
     /**
      * Method description
-     *
      *
      * @param val
      */
@@ -157,7 +157,6 @@ public class DDLGenerator extends Thread {
     /**
      * Method description
      *
-     *
      * @param val
      */
     public void setJdbcUrl(String val) {
@@ -167,7 +166,6 @@ public class DDLGenerator extends Thread {
 
     /**
      * Method description
-     *
      *
      * @param val
      */
@@ -179,7 +177,6 @@ public class DDLGenerator extends Thread {
     /**
      * Method description
      *
-     *
      * @param dir
      */
     public void setOutputDir(File dir) {
@@ -190,6 +187,6 @@ public class DDLGenerator extends Thread {
         }
 
         this.properties.put(PersistenceUnitProperties.APP_LOCATION,
-                            dir.getAbsolutePath());
+                dir.getAbsolutePath());
     }
 }

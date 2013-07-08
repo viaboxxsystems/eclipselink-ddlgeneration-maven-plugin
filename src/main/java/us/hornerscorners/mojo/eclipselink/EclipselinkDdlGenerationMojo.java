@@ -93,7 +93,7 @@ public class EclipselinkDdlGenerationMojo extends AbstractMojo {
      */
     private ClassLoader buildEntityClassLoader() throws MalformedURLException {
 
-        List<URL> urls = new ArrayList<>();
+        List<URL> urls = new ArrayList<URL>();
 
         File classesFile =
             new File(this.mavenProject.getBuild().getOutputDirectory());
